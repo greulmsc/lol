@@ -9,21 +9,21 @@ const papel_div = document.getElementById('papel');
 const tijeras_div = document.getElementById('tijeras');
 
 
-// set up the core function for the computer that will use math.random to loop through an array and return that value
+// genera la eleccion aleatoria de la computadora
 function getpcChoice() {
   const choices = ['piedra', 'papel', 'tijeras'];
   const randomNumber = Math.floor(Math.random() * 3);
   return choices[randomNumber];
 }
 
-// similar to convertcase but just takes lowercase and replaces with titlecase
+// xd
 function convertCase(anythingIwant) {
   if (anythingIwant === 'piedra') return 'Piedra';
   if (anythingIwant === 'papel') return 'Papel';
   if (anythingIwant === 'tijeras') return 'Tijeras';
 }
 
-// Winning Condition - this handles what happens when the user clicks one of the choices where the value is them passed through as a parameter
+// condicion para ganar
 function win(user, pc) {
   userScore++;
   // console.log('user score is ' + userScore + ' ' + user);
@@ -36,7 +36,7 @@ function win(user, pc) {
   setTimeout(() => roundStatus.classList.remove('winningStyles'), 300);
 }
 
-// Losing Condition - this handles what happens when the user clicks one of the choices where the value is them passed through as a parameter
+// condicion para perder
 function loses(user, pc) {
   pcScore++;
   // console.log('computer score is ' + computerScore + ' ' + computer);
@@ -49,7 +49,7 @@ function loses(user, pc) {
   setTimeout(() => roundStatus.classList.remove('losingStyles'), 300);
 }
 
-// Draw Condition - this handles what happens when the user clicks one of the choices where the value is them passed through as a parameter
+// condicion para empate
 function draw(user, pc) {
 	const userName = ' (Tú)'.fontsize(3).sup();
   const compName = ' (PC)'.fontsize(3).sup();
@@ -60,7 +60,7 @@ function draw(user, pc) {
   setTimeout(() => roundStatus.classList.remove('drawStyles'), 300);
 }
 
-// The core game functions that set up and determine the games actual logic aka paper beats rock etc
+// logica inicial
 function game(userChoice) {
   const pcChoice = getpcChoice();
   // console.log('Game function: user choice is = ' + userChoice);
@@ -87,23 +87,8 @@ function game(userChoice) {
       break;
   }
 }
-// ES5 style of writing this function
-// function main() {
-//   rock_div.addEventListener('click', function() {
-//     game('rock');
-//   });
 
-//   paper_div.addEventListener('click', function() {
-//     game('paper');
-//   });
-
-//   scissors_div.addEventListener('click', function() {
-//     game('scissors');
-//   });
-// }
-
-// ES6 style of writing this function
-// This function creates and adds an eventlistener to the rock, paper scissors html element and the passes the value of that element to the game function
+// relacion con html
 function main() {
   piedra_div.addEventListener('click', () => game('piedra'));
   papel_div.addEventListener('click', () => game('papel'));
