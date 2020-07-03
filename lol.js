@@ -4,22 +4,22 @@ const userScore_span = document.getElementById('user_score');
 const pcScore_span = document.getElementById('pc_score');
 const tablero_div = document.querySelector('.tablero');
 const resultado_div = document.querySelector('.resultado');
-const pi_div = document.getElementById('pi');
-const pa_div = document.getElementById('pa');
-const ti_div = document.getElementById('ti');
+const pi_div = document.getElementById('piedra');
+const pa_div = document.getElementById('papel');
+const ti_div = document.getElementById('tijeras');
 
 
 // set up the core function for the computer that will use math.random to loop through an array and return that value
 function getpcChoice() {
-  const choices = ['pi', 'pa', 'ti'];
+  const choices = ['piedra', 'papel', 'tijeras'];
   const randomNumber = Math.floor(Math.random() * 3);
   return choices[randomNumber];
 }
 
 // similar to convertcase but just takes lowercase and replaces with titlecase
 function convertCase(anythingIwant) {
-  if (anythingIwant === 'pa') return 'Papel';
-  if (anythingIwant === 'ti') return 'Tijeras';
+  if (anythingIwant === 'papel') return 'Papel';
+  if (anythingIwant === 'tijeras') return 'Tijeras';
   return 'Piedra';
 }
 
@@ -67,21 +67,21 @@ function game(userChoice) {
   // console.log('Game function: computer choice is = ' + computerChoice);
 
   switch (userChoice + pcChoice) {
-    case 'papi':
-    case 'piti':
-    case 'tipa':
+    case 'papelpiedra':
+    case 'piedratijeras':
+    case 'tijeraspapel':
       win(userChoice, pcChoice);
       // console.log("user wins");
       break;
-    case 'pipa':
-    case 'tipi':
-    case 'pati':
+    case 'piedrapapel':
+    case 'tijeraspiedra':
+    case 'papeltijeras':
       loses(userChoice, pcChoice);
       // console.log("computer wins");
       break;
-    case 'pipi':
-    case 'titi':
-    case 'papa':
+    case 'piedrapiedra':
+    case 'tijerastijeras':
+    case 'papelpapel':
       draw(userChoice, pcChoice);
       // console.log("draw");
       break;
@@ -105,9 +105,9 @@ function game(userChoice) {
 // ES6 style of writing this function
 // This function creates and adds an eventlistener to the rock, paper scissors html element and the passes the value of that element to the game function
 function main() {
-  pi_div.addEventListener('click', () => game('pi'));
-  pa_div.addEventListener('click', () => game('pa'));
-  ti_div.addEventListener('click', () => game('ti'));
+  pi_div.addEventListener('click', () => game('piedra'));
+  pa_div.addEventListener('click', () => game('papel'));
+  ti_div.addEventListener('click', () => game('tijeras'));
 }
 
 main();
