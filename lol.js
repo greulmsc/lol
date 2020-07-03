@@ -18,9 +18,9 @@ function getpcChoice() {
 
 // similar to convertcase but just takes lowercase and replaces with titlecase
 function convertCase(anythingIwant) {
+  if (anythingIwant === 'piedra') return 'Piedra';
   if (anythingIwant === 'papel') return 'Papel';
   if (anythingIwant === 'tijeras') return 'Tijeras';
-  return 'Piedra';
 }
 
 // Winning Condition - this handles what happens when the user clicks one of the choices where the value is them passed through as a parameter
